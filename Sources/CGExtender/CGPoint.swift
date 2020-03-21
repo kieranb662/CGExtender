@@ -40,26 +40,26 @@ extension CGPoint: VectorArithmetic {
 
 // MARK: - CGPoint Convienience Extension
 extension CGPoint {
-    func toSize() -> CGSize {
+    public func toSize() -> CGSize {
         CGSize(width: x, height: y)
     }
     
-    static func random(from: Range<CGFloat>) -> CGPoint {
+    public static func random(from: Range<CGFloat>) -> CGPoint {
         CGPoint(x: .random(in: from),
                 y: .random(in: from))
     }
     
-    static func random(from: ClosedRange<CGFloat>) -> CGPoint {
+    public static func random(from: ClosedRange<CGFloat>) -> CGPoint {
         CGPoint(x: .random(in: from),
                 y: .random(in: from))
     }
     
-    static func random(from: Range<Double>) -> CGPoint {
+    public static func random(from: Range<Double>) -> CGPoint {
         CGPoint(x: .random(in: from),
                 y: .random(in: from))
     }
     
-    static func random(from: ClosedRange<Double>) -> CGPoint {
+    public static func random(from: ClosedRange<Double>) -> CGPoint {
         CGPoint(x: .random(in: from),
                 y: .random(in: from))
     }

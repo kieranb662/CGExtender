@@ -45,26 +45,26 @@ extension CGSize: VectorArithmetic {
 
 // MARK: - CGSize Convienience
 extension CGSize {
-    func toPoint() -> CGPoint {
+    public func toPoint() -> CGPoint {
         CGPoint(x: width, y: height)
     }
     
-    static func random(from: Range<CGFloat>) -> CGSize {
+    public static func random(from: Range<CGFloat>) -> CGSize {
         CGSize(width: .random(in: from),
                height: .random(in: from))
     }
     
-    static func random(from: ClosedRange<CGFloat>) -> CGSize {
+    public static func random(from: ClosedRange<CGFloat>) -> CGSize {
         CGSize(width: .random(in: from),
                height: .random(in: from))
     }
     
-    static func random(from: Range<Double>) -> CGSize {
+    public static func random(from: Range<Double>) -> CGSize {
         CGSize(width: .random(in: from),
                height: .random(in: from))
     }
     
-    static func random(from: ClosedRange<Double>) -> CGSize {
+    public static func random(from: ClosedRange<Double>) -> CGSize {
         CGSize(width: .random(in: from),
                height: .random(in: from))
     }

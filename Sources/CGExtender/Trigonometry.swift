@@ -9,7 +9,7 @@ import CoreGraphics
 
 
 /// Returns only positive values between [0, 360]
-func atanP(x: Double, y: Double) -> Double {
+public func atanP(x: Double, y: Double) -> Double {
     if x > 0 && y>=0 {
         return atan(y/x)
     } else if x>0 && y<0 {
@@ -29,7 +29,7 @@ func atanP(x: Double, y: Double) -> Double {
 }
 
 /// Returns only positive values between [0, 360]
-func atanP(x: CGFloat, y: CGFloat) -> CGFloat {
+public func atanP(x: CGFloat, y: CGFloat) -> CGFloat {
     if x > 0 && y>=0 {
         return atan(y/x)
     } else if x>0 && y<0 {
