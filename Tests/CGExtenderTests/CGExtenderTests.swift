@@ -6,7 +6,7 @@ final class CGExtenderTests: XCTestCase {
         // This is an example of a functional test case.
         // Use XCTAssert and related functions to verify your tests produce the correct
         // results.
-        XCTAssertEqual(CGExtender().text, "Hello, World!")
+        XCTAssertEqual(atanP(x: 0, y: 0), Double.pi/2)
     }
 
     static var allTests = [
