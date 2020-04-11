@@ -8,7 +8,7 @@
 import CoreGraphics
 
 
-/// Returns only positive values between [0, 360]
+/// Returns only positive values between [0, 2π]
 public func atanP(x: Double, y: Double) -> Double {
     if x > 0 && y>=0 {
         return atan(y/x)
@@ -28,7 +28,7 @@ public func atanP(x: Double, y: Double) -> Double {
     
 }
 
-/// Returns only positive values between [0, 360]
+/// Returns only positive values between [0, 2π]
 public func atanP(x: CGFloat, y: CGFloat) -> CGFloat {
     if x > 0 && y>=0 {
         return atan(y/x)
@@ -49,7 +49,7 @@ public func atanP(x: CGFloat, y: CGFloat) -> CGFloat {
 }
 
 
-// Calculated the direction between two points relative to the vector pointing in the trailing direction
+/// Calculated the direction between two points relative to the vector pointing in the trailing direction
 public func calculateDirection(_ pt1: CGPoint, _ pt2: CGPoint) -> Double {
     let a = pt2.x - pt1.x
     let b = pt2.y - pt1.y
@@ -89,6 +89,6 @@ public func calculateParameter(_ L1: CGPoint, _ L2: CGPoint, _ p: CGPoint) -> CG
 public func distance(_ p1: CGPoint, _ p2: CGPoint) -> Double {
     sqrt((p1-p2).magnitudeSquared)
 }
-public func distance(p1: CGPoint, p2: CGPoint) -> CGFloat {
-    sqrt((p1.x-p2.x)*(p1.x-p2.x) + (p1.y-p2.y)*(p1.y-p2.y))
+public func distance(_ p1: CGPoint, _ p2: CGPoint) -> CGFloat {
+    CGFloat(sqrt((p1-p2).magnitudeSquared))
 }

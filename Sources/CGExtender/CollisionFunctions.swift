@@ -89,15 +89,15 @@ public func circleCircle(_ c1x: CGFloat, _ c1y: CGFloat, _ c1r: CGFloat, _ c2x: 
 // MARK: - LINE/POINT
 public func linePoint( _ x1: CGFloat, _  y1: CGFloat, _  x2: CGFloat, _  y2: CGFloat, _  px: CGFloat, _  py: CGFloat) -> Bool  {
     // get distance from the point to the two ends of the line
-    let d1 = distance(CGPoint(x: px, y: py), CGPoint(x: x1, y: y1))
-    let d2 = distance(CGPoint(x: px, y: py), CGPoint(x: x2, y: y2))
+    let d1: CGFloat = distance(CGPoint(x: px, y: py), CGPoint(x: x1, y: y1))
+    let d2: CGFloat = distance(CGPoint(x: px, y: py), CGPoint(x: x2, y: y2))
     
     // get the length of the line
-    let lineLen = distance(CGPoint(x: x1, y: y1), CGPoint(x: x2, y: y2))
+    let lineLen: CGFloat = distance(CGPoint(x: x1, y: y1), CGPoint(x: x2, y: y2))
     
     // since floats are so minutely accurate, add
     // a little buffer zone that will give collision
-    let buffer = 0.1;    // higher # = less accurate
+    let buffer: CGFloat = 0.1;    // higher # = less accurate
     
     // if the two distances are equal to the line's
     // length, the point is on the line!
@@ -119,7 +119,7 @@ public func lineCircle(_ x1: CGFloat, _ y1: CGFloat, _ x2: CGFloat, _ y2: CGFloa
     // get length of the line
     var distX = x1 - x2
     var distY = y1 - y2
-    var len = sqrt( (distX*distX) + (distY*distY) )
+    let len = sqrt( (distX*distX) + (distY*distY) )
     // get dot product of the line and circle
     let dot = ( ((cx-x1)*(x2-x1)) + ((cy-y1)*(y2-y1)) ) / pow(len,2)
     // find the closest point on the line
@@ -176,7 +176,7 @@ public func polygonPoint(_ vertices: [CGPoint], _ px: CGFloat, _ py: CGFloat) ->
         // if we've hit the end, wrap around to 0
         next = current+1;
         if (next == vertices.count) { next = 0 }
-        // get the PVectors at our current position
+        // get the vectors at our current position
         // this makes our if statement a little cleaner
         let vc = vertices[current];    // c for "current"
         let vn = vertices[next];       // n for "next"
@@ -233,7 +233,7 @@ public func polyRect(_ vertices: [CGPoint], _ rx: CGFloat, _ ry: CGFloat, _ rw: 
         // if we've hit the end, wrap around to 0
         next = current+1
         if (next == vertices.count) { next = 0 }
-        // get the PVectors at our current position
+        // get the vectors at our current position
         // this makes our if statement a little cleaner
         let vc = vertices[current];    // c for "current"
         let vn = vertices[next];       // n for "next"
@@ -259,7 +259,7 @@ public func polyLine(_ vertices: [CGPoint], _ x1: CGFloat, _ y1: CGFloat, _ x2: 
         // if we've hit the end, wrap around to 0
         next = current+1
         if (next == vertices.count) {next = 0}
-        // get the PVectors at our current position
+        // get the vectors at our current position
         // extract X/Y coordinates from each
         let x3 = vertices[current].x;
         let y3 = vertices[current].y;
@@ -287,7 +287,7 @@ public func polyPoly(_ p1: [CGPoint], _ p2: [CGPoint]) -> Bool  {
         // if we've hit the end, wrap around to 0
         next = current+1;
         if (next == p1.count) {next = 0 }
-        // get the PVectors at our current position
+        // get the vectors at our current position
         // this makes our if statement a little cleaner
         let vc = p1[current];    // c for "current"
         let vn = p1[next];       // n for "next"
@@ -320,7 +320,7 @@ public func triPoint(_ x1: CGFloat, _ y1: CGFloat, _ x2: CGFloat, _ y2: CGFloat,
 }
 
 
-
+// MARK: - Points Of Intersection
 public func lineLineIntersection(_ x1: CGFloat, _ y1: CGFloat, _ x2: CGFloat, _ y2: CGFloat, _ x3: CGFloat, _ y3: CGFloat, _ x4: CGFloat, _ y4: CGFloat) -> (Bool, CGPoint) {
     // calculate the direction of the lines
     let uA = ((x4-x3)*(y1-y3) - (y4-y3)*(x1-x3)) / ((y4-y3)*(x2-x1) - (x4-x3)*(y2-y1));
