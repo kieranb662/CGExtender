@@ -8,6 +8,7 @@
 import SwiftUI
 
 // MARK: - CGPoint VectorArithmetic Conformance
+
 extension CGPoint: VectorArithmetic {
     public static func -= (lhs: inout CGPoint, rhs: CGPoint) {
         lhs.x -= rhs.x
@@ -39,6 +40,7 @@ extension CGPoint: VectorArithmetic {
 
 
 // MARK: - CGPoint Convienience Extension
+
 extension CGPoint {
     public func toSize() -> CGSize {
         CGSize(width: x, height: y)

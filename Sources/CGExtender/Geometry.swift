@@ -7,21 +7,26 @@
 
 import CoreGraphics
 
-
 /// Returns only positive values between [0, 2π]
 public func atanP(x: Double, y: Double) -> Double {
-    if x > 0 && y>=0 {
+    if x>0 && y>=0 {
         return atan(y/x)
+        
     } else if x>0 && y<0 {
         return 2*Double.pi + atan(y/x)
-    } else if x < 0 && y >= 0{
+        
+    } else if x<0 && y>=0 {
         return .pi + atan(y/x)
-    } else if x < 0 && y < 0 {
+        
+    } else if x<0 && y<0 {
         return .pi + atan(y/x)
+        
     } else if x==0 && y>=0 {
         return .pi/2
-    } else if x == 0 && y < 0 {
+        
+    } else if x==0 && y<0 {
         return 3/2*Double.pi
+        
     } else {
         return 0
     }
@@ -30,24 +35,8 @@ public func atanP(x: Double, y: Double) -> Double {
 
 /// Returns only positive values between [0, 2π]
 public func atanP(x: CGFloat, y: CGFloat) -> CGFloat {
-    if x > 0 && y>=0 {
-        return atan(y/x)
-    } else if x>0 && y<0 {
-        return 2*CGFloat.pi + atan(y/x)
-    } else if x < 0 && y >= 0{
-        return .pi + atan(y/x)
-    } else if x < 0 && y < 0 {
-        return .pi + atan(y/x)
-    } else if x==0 && y>=0 {
-        return .pi/2
-    } else if x == 0 && y < 0 {
-        return 3/2*CGFloat.pi
-    } else {
-        return 0
-    }
-    
+    CGFloat(atanP(x: Double(x), y: Double(y)))
 }
-
 
 /// Calculated the direction between two points relative to the vector pointing in the trailing direction
 public func calculateDirection(_ pt1: CGPoint, _ pt2: CGPoint) -> Double {
@@ -65,12 +54,14 @@ public func project(_ L1: CGPoint, _ L2: CGPoint, _ p: CGPoint) -> CGPoint {
     let scalar = top/CGFloat(onTo.magnitudeSquared)
     return CGPoint(x: scalar*onTo.x, y: scalar*onTo.y)
 }
+
 /// Projects the first vector onto the second vector
 public func project(_ vector: CGSize, _ onto: CGSize) -> CGSize {
     let top = onto.width*vector.width + onto.height*vector.height
     let scalar = top/CGFloat(onto.magnitudeSquared)
     return CGSize(width: scalar*onto.width, height: scalar*onto.height)
 }
+
 /// Projects the point `p` onto the vector defined by the points `L1` and `L2`,  uses the parametric
 ///  form of the line segment from `L1` to `L2` to constrain the projected point to be on the line segment
 public func calculateParameter(_ L1: CGPoint, _ L2: CGPoint, _ p: CGPoint) -> CGFloat {
@@ -85,10 +76,10 @@ public func calculateParameter(_ L1: CGPoint, _ L2: CGPoint, _ p: CGPoint) -> CG
     }
 }
 
-
 public func distance(_ p1: CGPoint, _ p2: CGPoint) -> Double {
     sqrt((p1-p2).magnitudeSquared)
 }
+
 public func distance(_ p1: CGPoint, _ p2: CGPoint) -> CGFloat {
     CGFloat(sqrt((p1-p2).magnitudeSquared))
 }

@@ -9,6 +9,7 @@
 import CoreGraphics
 
 // MARK: - RECTANGLE/RECTANGLE
+
 public func rectRect(_ r1x: CGFloat, _ r1y: CGFloat, _ r1w: CGFloat, _ r1h: CGFloat, _ r2x: CGFloat, _ r2y: CGFloat, _ r2w: CGFloat, _ r2h: CGFloat) -> Bool {
     // are the sides of one rectangle touching the other?
     if (r1x + r1w >= r2x &&    // r1 right edge past r2 left
@@ -21,6 +22,7 @@ public func rectRect(_ r1x: CGFloat, _ r1y: CGFloat, _ r1w: CGFloat, _ r1h: CGFl
 }
 
 // MARK: - CIRCLE/RECTANGLE
+
 public func circleRect(_ cx: CGFloat, _ cy: CGFloat, _ radius: CGFloat, _ rx: CGFloat, _ ry: CGFloat, _ rw: CGFloat, _ rh: CGFloat) -> Bool {
     // temporary variables to set edges for testing
     var testX = cx;
@@ -45,6 +47,7 @@ public func circleRect(_ cx: CGFloat, _ cy: CGFloat, _ radius: CGFloat, _ rx: CG
 }
 
 // MARK: - POINT/RECTANGLE
+
 public func pointRect(_ px: CGFloat, _ py: CGFloat, _ rx: CGFloat, _ ry: CGFloat, _ rw: CGFloat, _ rh: CGFloat) -> Bool {
     // is the point inside the rectangle's bounds?
     if (px >= rx &&        // right of the left edge AND
@@ -57,6 +60,7 @@ public func pointRect(_ px: CGFloat, _ py: CGFloat, _ rx: CGFloat, _ ry: CGFloat
 }
 
 // MARK: - POINT/CIRCLE
+
 public func pointCircle(_ px: CGFloat, _ py: CGFloat, _ cx: CGFloat, _ cy: CGFloat, _ r: CGFloat) -> Bool  {
     // get distance between the point and circle's center
     // using the Pythagorean Theorem
@@ -87,6 +91,7 @@ public func circleCircle(_ c1x: CGFloat, _ c1y: CGFloat, _ c1r: CGFloat, _ c2x: 
 }
 
 // MARK: - LINE/POINT
+
 public func linePoint( _ x1: CGFloat, _  y1: CGFloat, _  x2: CGFloat, _  y2: CGFloat, _  px: CGFloat, _  py: CGFloat) -> Bool  {
     // get distance from the point to the two ends of the line
     let d1: CGFloat = distance(CGPoint(x: px, y: py), CGPoint(x: x1, y: y1))
@@ -110,6 +115,7 @@ public func linePoint( _ x1: CGFloat, _  y1: CGFloat, _  x2: CGFloat, _  y2: CGF
 }
 
 // MARK: - LINE/CIRCLE
+
 public func lineCircle(_ x1: CGFloat, _ y1: CGFloat, _ x2: CGFloat, _ y2: CGFloat, _ cx: CGFloat, _ cy: CGFloat, _ r: CGFloat) -> Bool  {
     // is either end INSIDE the circle?
     // if so, return true immediately
@@ -141,6 +147,7 @@ public func lineCircle(_ x1: CGFloat, _ y1: CGFloat, _ x2: CGFloat, _ y2: CGFloa
 }
 
 // MARK: - Line/Line
+
 public func lineLine(_ x1: CGFloat, _ y1: CGFloat, _ x2: CGFloat, _ y2: CGFloat, _ x3: CGFloat, _ y3: CGFloat, _ x4: CGFloat, _ y4: CGFloat) -> Bool {
     // calculate the distance to intersection point
     let uA: CGFloat = ((x4-x3)*(y1-y3) - (y4-y3)*(x1-x3)) / ((y4-y3)*(x2-x1) - (x4-x3)*(y2-y1));
@@ -150,6 +157,7 @@ public func lineLine(_ x1: CGFloat, _ y1: CGFloat, _ x2: CGFloat, _ y2: CGFloat,
 }
 
 // MARK: - LINE/RECTANGLE
+
 public func lineRect(_ x1: CGFloat, _ y1: CGFloat, _ x2: CGFloat, _ y2: CGFloat, _ rx: CGFloat, _ ry: CGFloat, _ rw: CGFloat, _ rh: CGFloat) -> Bool  {
     // check if the line has hit any of the rectangle's sides
     // uses the Line/Line function below
@@ -166,6 +174,7 @@ public func lineRect(_ x1: CGFloat, _ y1: CGFloat, _ x2: CGFloat, _ y2: CGFloat,
 }
 
 // MARK: - POLYGON/POINT
+
 public func polygonPoint(_ vertices: [CGPoint], _ px: CGFloat, _ py: CGFloat) -> Bool  {
     var collision = false
     // go through each of the vertices, plus
@@ -191,6 +200,7 @@ public func polygonPoint(_ vertices: [CGPoint], _ px: CGFloat, _ py: CGFloat) ->
 }
 
 // MARK: - POLYGON/CIRCLE
+
 public func polyCircle(vertices: [CGPoint], _ cx: CGFloat, _ cy: CGFloat, _ r: CGFloat) -> Bool {
     // go through each of the vertices, plus
     // the next vertex in the list
@@ -224,6 +234,7 @@ public func polyCircle(vertices: [CGPoint], _ cx: CGFloat, _ cy: CGFloat, _ r: C
 }
 
 // MARK: - POLYGON/RECTANGLE
+
 public func polyRect(_ vertices: [CGPoint], _ rx: CGFloat, _ ry: CGFloat, _ rw: CGFloat, _ rh: CGFloat) -> Bool  {
     // go through each of the vertices, plus the next
     // vertex in the list
@@ -250,6 +261,7 @@ public func polyRect(_ vertices: [CGPoint], _ rx: CGFloat, _ ry: CGFloat, _ rw: 
 }
 
 // MARK: - POLYGON/LINE
+
 public func polyLine(_ vertices: [CGPoint], _ x1: CGFloat, _ y1: CGFloat, _ x2: CGFloat, _ y2: CGFloat) -> Bool  {
     // go through each of the vertices, plus the next
     // vertex in the list
@@ -278,6 +290,7 @@ public func polyLine(_ vertices: [CGPoint], _ x1: CGFloat, _ y1: CGFloat, _ x2: 
 }
 
 // MARK: - POLYGON/POLYGON
+
 public func polyPoly(_ p1: [CGPoint], _ p2: [CGPoint]) -> Bool  {
     // go through each of the vertices, plus the next
     // vertex in the list
@@ -303,6 +316,7 @@ public func polyPoly(_ p1: [CGPoint], _ p2: [CGPoint]) -> Bool  {
 }
 
 // MARK: - Triangle/Point
+
 public func triPoint(_ x1: CGFloat, _ y1: CGFloat, _ x2: CGFloat, _ y2: CGFloat, _ x3: CGFloat, _ y3: CGFloat, _ px: CGFloat, _ py: CGFloat) -> Bool  {
     // get the area of the triangle
     let areaOrig = abs( (x2-x1)*(y3-y1) - (x3-x1)*(y2-y1) );
@@ -321,6 +335,7 @@ public func triPoint(_ x1: CGFloat, _ y1: CGFloat, _ x2: CGFloat, _ y2: CGFloat,
 
 
 // MARK: - Points Of Intersection
+
 public func lineLineIntersection(_ x1: CGFloat, _ y1: CGFloat, _ x2: CGFloat, _ y2: CGFloat, _ x3: CGFloat, _ y3: CGFloat, _ x4: CGFloat, _ y4: CGFloat) -> (Bool, CGPoint) {
     // calculate the direction of the lines
     let uA = ((x4-x3)*(y1-y3) - (y4-y3)*(x1-x3)) / ((y4-y3)*(x2-x1) - (x4-x3)*(y2-y1));
